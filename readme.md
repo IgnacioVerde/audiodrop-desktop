@@ -1,70 +1,140 @@
-# AudioDrop 1.1.0
+# AudioDrop Desktop
 
-App de escritorio para Windows hecha con Python + PyQt6.
+AudioDrop is a desktop music application for Windows that combines local music playback, playlist management, YouTube search and audio downloading in a single interface.
 
-## Funciones incluidas
+Built with **Python and PyQt6**, the application includes its own dependency management for tools such as **yt-dlp** and **FFmpeg**, allowing it to work without requiring users to configure them manually.
 
-- Buscar música en YouTube usando yt-dlp.
-- Previsualizar audio antes de descargar.
-- Descargar MP3 individual.
-- Descargar playlists omitiendo errores.
-- Biblioteca local.
-- Listas propias.
-- Historial.
-- Reproductor inferior.
-- Visualizador estético.
-- Tema oscuro/claro.
-- Configuración persistente en `%LOCALAPPDATA%\AudioDrop`.
-- Herramientas internas en `%LOCALAPPDATA%\AudioDrop\tools`.
+## Features
 
-## Ejecutar en desarrollo
+* Search YouTube directly from the application
+* Preview search results before downloading
+* Download individual tracks as MP3
+* Download complete YouTube playlists
+* Local music library
+* Integrated audio player
+* Play / pause / previous / next controls
+* Seek and volume control
+* Shuffle and repeat modes
+* Custom playlists
+* Persistent playlist storage
+* Animated audio visualizer
+* Light and dark themes
+* Download queue and status tracking
+* Automatic detection of required external tools
+* Automatic download/update of yt-dlp and FFmpeg
+* Windows installer support
 
-```bat
-cd /d D:\programacion\ytdownloader
+## Tech Stack
+
+* **Python**
+* **PyQt6**
+* **Qt Multimedia**
+* **yt-dlp**
+* **FFmpeg / ffprobe**
+* **PyInstaller**
+* **Inno Setup**
+
+## Project Structure
+
+```text
+AudioDrop/
+├── main.py
+├── youtube_downloader.py
+├── playlist_manager.py
+├── tools_manager.py
+├── config_manager.py
+├── styles.py
+├── utils.py
+├── requirements.txt
+├── assets/
+└── installer/
+```
+
+The exact structure may vary between versions.
+
+## Installation for Development
+
+### Requirements
+
+* Windows 10/11
+* Python 3
+* Git
+
+Clone the repository:
+
+```bash
+git clone https://github.com/IgnacioVerde/audiodrop-desktop.git
+cd audiodrop-desktop
+```
+
+Create a virtual environment:
+
+```bash
 python -m venv .venv
+```
+
+Activate it:
+
+```bash
 .venv\Scripts\activate
-python -m pip install -r requirements.txt
+```
+
+Install the Python dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run AudioDrop:
+
+```bash
 python main.py
 ```
 
-También podés usar:
+## External Tools
 
-```bat
-run_dev.bat
-```
+AudioDrop uses:
 
-## Crear EXE
+* `yt-dlp`
+* `FFmpeg`
+* `ffprobe`
 
-```bat
-build_exe.bat
-```
+The application is designed to detect missing tools and manage its own local copies instead of requiring a system-wide installation.
 
-O manualmente:
+They are stored under the user's local application data directory.
 
-```bat
-cd /d D:\programacion\ytdownloader
-.venv\Scripts\activate
-rmdir /s /q build
-rmdir /s /q dist
-python -m PyInstaller --noconfirm --clean AudioDrop.spec
-```
+## Building
 
-## Crear instalador
+The Windows executable can be generated using **PyInstaller**.
 
-Primero instalá Inno Setup si no lo tenés:
+The project also includes support for creating a native Windows installer using **Inno Setup**.
 
-```bat
-winget install --id JRSoftware.InnoSetup -e -s winget
-```
+## AudioDrop Android
 
-Después:
+An experimental Android version of AudioDrop is also under development.
 
-```bat
-build_installer.bat
-```
+Repository:
 
-El instalador sale en:
+[AudioDrop Android](https://github.com/IgnacioVerde/audiodrop-android)
 
-```text
-installer\AudioDropSetup_1.1.0.exe
-```
+The Android version currently implements local music playback and core player functionality but is still a work in progress.
+
+## Project Status
+
+AudioDrop Desktop is functional and includes the main playback, library, playlist, search and download features.
+
+Development is ongoing and additional improvements may be added over time.
+
+## Disclaimer
+
+AudioDrop is intended for personal and educational use.
+
+Users are responsible for ensuring that they have the right to download or process any content used with the application and for complying with the terms of the services from which content is accessed.
+
+## Author
+
+**Ignacio Verde**
+
+Software Developer · Automation · Infrastructure
+
+GitHub: [@IgnacioVerde](https://github.com/IgnacioVerde)
